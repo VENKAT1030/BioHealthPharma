@@ -1,0 +1,50 @@
+[
+  {
+    "id": "neurology",
+    "name": "Neurology",
+    "icon": "Brain",
+    "description": "Innovative neurological medicines designed to support cognitive health, nervous system function, and long-term patient care."
+  },
+  {
+    "id": "orthopaedics",
+    "name": "Orthopaedics",
+    "icon": "Bone",
+    "description": "Comprehensive orthopedic formulations for bone strength, joint health, and musculoskeletal wellness."
+  },
+  {
+    "id": "cardiology",
+    "name": "Cardiology",
+    "icon": "HeartPulse",
+    "description": "Reliable cardiovascular medicines developed to support heart health and improve quality of life."
+  },
+  {
+    "id": "gastroenterology",
+    "name": "Gastroenterology",
+    "icon": "Stethoscope",
+    "description": "Advanced gastrointestinal therapies for digestive health, gastric care, and patient comfort."
+  },
+  {
+    "id": "antibiotics",
+    "name": "Antibiotics",
+    "icon": "ShieldPlus",
+    "description": "Quality antimicrobial medicines manufactured to support effective treatment of bacterial infections."
+  },
+  {
+    "id": "pain-management",
+    "name": "Pain Management",
+    "icon": "Activity",
+    "description": "Effective pain management solutions for acute and chronic conditions with trusted pharmaceutical quality."
+  },
+  {
+    "id": "nutrition",
+    "name": "Nutrition",
+    "icon": "Leaf",
+    "description": "Science-based nutritional supplements formulated to promote immunity, vitality, and overall well-being."
+  },
+  {
+    "id": "dermatology",
+    "name": "Dermatology",
+    "icon": "Sparkles",
+    "description": "Dermatological products developed for healthy skin, long-term care, and clinical effectiveness."
+  }
+]

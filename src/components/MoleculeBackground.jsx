@@ -1,0 +1,3 @@
+export default function MoleculeBackground({ className = "" }) {
+  return <svg aria-hidden="true" viewBox="0 0 560 420" className={`pointer-events-none absolute ${className}`} fill="none"><g stroke="currentColor" strokeWidth="1.2"><path d="M89 104 196 55l102 62 112-50 82 77" /><path d="m89 104 23 123 117 62 69-82 112 63 82-76" /><path d="m196 55 33 234m69-172v90m112-140v203" /></g><g fill="currentColor"><circle cx="89" cy="104" r="6" /><circle cx="196" cy="55" r="8" /><circle cx="298" cy="117" r="6" /><circle cx="410" cy="67" r="8" /><circle cx="492" cy="144" r="6" /><circle cx="112" cy="227" r="8" /><circle cx="229" cy="289" r="6" /><circle cx="298" cy="207" r="8" /><circle cx="410" cy="270" r="6" /><circle cx="492" cy="194" r="8" /></g></svg>;
+}

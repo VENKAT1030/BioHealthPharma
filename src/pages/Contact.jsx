@@ -1,0 +1,13 @@
+import { Mail, MapPin, Phone, Send } from "lucide-react";
+import { useState } from "react";
+import Reveal from "../components/Reveal";
+
+const contactItems = [[Mail, "Email", "info@biohealthpharma.com"], [Phone, "Phone", "+91 00000 00000"], [MapPin, "Address", "India"]];
+
+export default function Contact() {
+  const [sent, setSent] = useState(false);
+  const submit = (event) => { event.preventDefault(); setSent(true); event.currentTarget.reset(); };
+  return <main className="pb-24 pt-32"><section className="bg-[#edf3f4] py-16"><div className="container-app"><Reveal><p className="eyebrow">Contact us</p><h1 className="mt-4 text-4xl font-semibold sm:text-5xl">Let’s start a conversation.</h1><p className="mt-5 max-w-2xl leading-7 text-ink/65">For product information or business enquiries, our team is here to help.</p></Reveal></div></section><section className="container-app grid gap-12 pt-14 lg:grid-cols-[.8fr_1.2fr]"><Reveal><div><h2 className="text-2xl font-semibold">Get in touch</h2><p className="mt-4 max-w-sm leading-7 text-ink/65">Reach out through the details below, or send an enquiry using the form.</p><div className="mt-8 space-y-5">{contactItems.map(([Icon, label, value]) => <div key={label} className="flex gap-4"><span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-medgreen/10 text-medgreen"><Icon size={20} /></span><div><p className="text-xs font-semibold uppercase tracking-[.12em] text-ink/45">{label}</p><p className="mt-1 text-sm font-medium text-navy">{value}</p></div></div>)}</div></div></Reveal><Reveal delay={.1}><form onSubmit={submit} className="card-surface p-6 sm:p-8"><div className="grid gap-5 sm:grid-cols-2"><Field label="Your name" required /><Field label="Email address" type="email" required /></div><div className="mt-5"><Field label="Company / organisation" /></div><div className="mt-5"><label className="form-label">Your enquiry</label><textarea required rows="5" placeholder="How can we help?" className="form-control resize-y" /></div><button className="btn-primary mt-6" type="submit">Send enquiry <Send size={16} /></button>{sent && <p className="mt-4 text-sm text-medgreen">Thank you. Your enquiry has been noted. We will be in touch soon.</p>}<p className="mt-4 text-xs leading-5 text-ink/50">This static form does not send emails yet. A contact service can be connected when you are ready.</p></form></Reveal></section></main>;
+}
+
+function Field({ label, type = "text", required = false }) { return <label><span className="form-label">{label}</span><input type={type} required={required} className="form-control" /></label>; }

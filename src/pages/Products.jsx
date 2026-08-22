@@ -1,0 +1,18 @@
+import { Search, X } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import categories from "../data/categories.json";
+import medicines from "../data/medicines.json";
+import ProductCard from "../components/ProductCard";
+import Reveal from "../components/Reveal";
+
+export default function Products() {
+  const [params, setParams] = useSearchParams();
+  const query = params.get("q") || "";
+  const selectedCategory = params.get("category") || "all";
+  const categoryById = Object.fromEntries(categories.map((category) => [category.id, category]));
+  const results = medicines.filter((medicine) => (selectedCategory === "all" || medicine.category === selectedCategory) && `${medicine.name} ${medicine.composition} ${medicine.dosageForm}`.toLowerCase().includes(query.toLowerCase()));
+  const update = (key, value) => { const next = new URLSearchParams(params); if (!value || value === "all") next.delete(key); else next.set(key, value); setParams(next); };
+
+  return <main className="pb-24 pt-32"><section className="bg-[#edf3f4] py-16"><div className="container-app"><Reveal><p className="eyebrow">Our portfolio</p><h1 className="mt-4 text-4xl font-semibold sm:text-5xl">Medicines for essential care.</h1><p className="mt-5 max-w-2xl leading-7 text-ink/65">Browse our therapeutic categories and product information. This catalogue is for professional information only.</p></Reveal></div></section><section className="container-app pt-10"><div className="rounded-2xl border border-line bg-white p-4 shadow-sm sm:p-6"><label className="relative block"><Search className="absolute left-4 top-1/2 -translate-y-1/2 text-navy/45" size={19} /><input value={query} onChange={(event) => update("q", event.target.value)} placeholder="Search medicines or composition..." className="w-full rounded-xl border border-line bg-surface py-3 pl-11 pr-10 text-sm outline-none transition focus:border-medgreen" />{query && <button onClick={() => update("q", "")} aria-label="Clear search" className="absolute right-3 top-1/2 -translate-y-1/2 rounded-full p-1 text-navy/50 hover:bg-black/5"><X size={17} /></button>}</label><div className="mt-5 flex gap-2 overflow-x-auto pb-1">{[{ id: "all", name: "All products" }, ...categories].map((category) => <button key={category.id} onClick={() => update("category", category.id)} className={`shrink-0 rounded-full px-4 py-2 text-sm font-medium transition ${selectedCategory === category.id ? "bg-navy text-white" : "border border-line bg-white text-ink/70 hover:border-medgreen hover:text-navy"}`}>{category.name}</button>)}</div></div><div className="mt-8 flex items-center justify-between"><p className="text-sm text-ink/60"><span className="font-semibold text-navy">{results.length}</span> {results.length === 1 ? "medicine" : "medicines"} found</p>{(query || selectedCategory !== "all") && <button onClick={() => setParams({})} className="text-sm font-semibold text-medgreen hover:text-navy">Clear filters</button>}</div><AnimatePresence mode="popLayout"><motion.div layout className="mt-7 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">{results.map((medicine) => <motion.div layout key={medicine.id} initial={{ opacity: 0, scale: .97 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: .97 }}><ProductCard medicine={medicine} category={categoryById[medicine.category]} /></motion.div>)}</motion.div></AnimatePresence>{!results.length && <div className="mt-12 rounded-2xl border border-dashed border-line p-12 text-center"><h2 className="text-xl font-semibold">No medicines found</h2><p className="mt-2 text-sm text-ink/60">Try a different search term or clear the active filters.</p></div>}</section></main>;
+}
