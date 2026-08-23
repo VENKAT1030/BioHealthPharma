@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
 import { easeOut } from "../animations/variants";
 
-const NAME = "BIO HEALTH PHARMA";
+const NAME = "BIOHEALTH PHARMA";
 
 export default function Loader({ onFinish }) {
   const [progress, setProgress] = useState(0);

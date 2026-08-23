@@ -4,7 +4,7 @@ export default function Logo({ size = 48, linked = false, className = "" }) {
   const content = (
     <img
       src="/bio-health-pharma-logo.png"
-      alt="Bio Health Pharma"
+      alt="BioHealth Pharma"
       className={`block h-auto w-auto max-w-full rounded-md ${className}`}
       style={{ height: size }}
     />
