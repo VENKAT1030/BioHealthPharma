@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Logo from "./Logo";
 import { easeOut } from "../animations/variants";
 
-const NAME = "BIOHEALTH PHARMA";
+const NAME = ["BIOHEALTH", "PHARMA"];
 
 export default function Loader({ onFinish }) {
   const [progress, setProgress] = useState(0);
@@ -68,7 +68,7 @@ export default function Loader({ onFinish }) {
 
           {/* Company Name */}
           <motion.div
-            className="mt-6 flex flex-wrap justify-center gap-x-2 px-6 font-heading text-xl font-semibold tracking-[0.18em] text-white md:text-2xl"
+            className="mt-6 flex flex-wrap justify-center gap-x-3 px-5 text-center font-heading text-[clamp(1.15rem,5vw,1.5rem)] font-semibold tracking-[0.12em] text-white sm:gap-x-4 sm:tracking-[0.18em]"
             initial="hidden"
             animate="show"
             variants={{
@@ -81,28 +81,18 @@ export default function Loader({ onFinish }) {
               },
             }}
           >
-            {NAME.split("").map((char, index) => (
-              <motion.span
-                key={index}
-                variants={{
-                  hidden: {
-                    opacity: 0,
-                    y: 10,
-                  },
-                  show: {
-                    opacity: 1,
-                    y: 0,
-                  },
-                }}
-              >
-                {char === " " ? "\u00A0" : char}
-              </motion.span>
+            {NAME.map((word) => (
+              <span key={word} className="inline-flex whitespace-nowrap">
+                {word.split("").map((char, index) => (
+                  <motion.span key={index} variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}>{char}</motion.span>
+                ))}
+              </span>
             ))}
           </motion.div>
 
           {/* Tagline */}
           <motion.p
-            className="mt-3 text-xs font-medium uppercase tracking-[0.3em] text-medgreen"
+            className="mt-3 px-5 text-center text-[10px] font-medium uppercase tracking-[0.18em] text-medgreen sm:text-xs sm:tracking-[0.3em]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{
