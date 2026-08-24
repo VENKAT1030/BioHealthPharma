@@ -4,7 +4,7 @@ export default function Logo({ size = 48, linked = false, className = "" }) {
   const content = (
     <img
       src="/bio-health-pharma-logo.png"
-      alt="BIOHEALTH PHARMA"
+      alt="BioHealth Pharma"
       className={`block h-auto w-auto max-w-full rounded-md ${className}`}
       style={{ height: size }}
     />
@@ -12,5 +12,5 @@ export default function Logo({ size = 48, linked = false, className = "" }) {
 
   if (!linked) return content;
 
-  return <Link to="/" aria-label="BIOHEALTH PHARMA home" className="inline-flex">{content}</Link>;
+  return <Link to="/" aria-label="BioHealth Pharma home" className="inline-flex">{content}</Link>;
 }
