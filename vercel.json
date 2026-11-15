@@ -1,14 +1,3 @@
-
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "rewrites": [
-    {
-      "source": "/loaderio-a4c03c53a891310bf3859079aa61f355.txt",
-      "destination": "/loaderio-a4c03c53a891310bf3859079aa61f355.txt"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/index.html"
-    }
-  ]
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
 }
