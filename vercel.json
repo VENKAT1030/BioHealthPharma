@@ -1,3 +1,8 @@
 {
-  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+  "rewrites": [
+    {
+      "source": "/((?!loaderio-.*\\.txt).*)",
+      "destination": "/index.html"
+    }
+  ]
 }
